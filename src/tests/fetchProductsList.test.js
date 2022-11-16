@@ -8,8 +8,9 @@ describe('Teste a função fetchProductsList', () => {
     expect(typeof fetchProductsList).toBe('function');
   });
 
-  it('fetch é chamado ao executar fetchProductsList', () => {
-
+  it('fetch é chamado ao executar fetchProductsList', async () => {
+    const response = await fetchProductsList();
+    expect(typeof response).toBe('object');
   });
 
   it('fetch é chamado com o endpoint correto ao executar fetchProductsList', () => {
