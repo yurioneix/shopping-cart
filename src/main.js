@@ -3,4 +3,4 @@ import { fetchProductsList } from './helpers/fetchFunctions';
 import './style.css';
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
-console.log(fetchProductsList('computador'));
+console.log(await fetchProductsList('computador'));

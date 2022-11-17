@@ -11,6 +11,6 @@ export const fetchProductsList = async (query) => {
     const data = await response.json();
     return data.results;
   } catch (e) {
-    return e.message;
+    return e;
   }
 };
