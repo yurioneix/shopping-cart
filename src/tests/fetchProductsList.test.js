@@ -4,10 +4,6 @@ import computadorSearch from './mocks/search';
 
 // implemente seus testes aqui
 describe('Teste a função fetchProductsList', () => {
-  // beforeEach(async () => {
-    
-  // });
-
   it('fetchProductsList é uma função', () => {
     expect(typeof fetchProductsList).toBe('function');
   });
@@ -33,7 +29,7 @@ describe('Teste a função fetchProductsList', () => {
       await fetchProductsList();
     }
     catch(e) {
-      expect(e.message).toMatch('Termo de busca não informado')
+      expect(e).toThrow('Termo de busca não informado')
     }
   });
 });
