@@ -21,7 +21,17 @@ const removeLoading = () => {
   container.removeChild(p);
 };
 
-createLoading();
-const request = await fetchProductsList('computador');
-removeLoading();
-request.forEach((product) => sectionProducts.appendChild(createProductElement(product)));
+const createProducList = async () => {
+  createLoading();
+  try {
+    const request = await fetchProductsList('computador');
+    removeLoading();
+    request
+      .forEach((product) => sectionProducts.appendChild(createProductElement(product)));
+  } catch (error) {
+    const p = document.querySelector('.loading');
+    p.innerText = 'Algum erro ocorreu, recarregue a página e tente novamente';
+  }
+};
+
+createProducList();
