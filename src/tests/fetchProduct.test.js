@@ -15,11 +15,10 @@ describe('Teste a função fetchProduct', () => {
   });
 
   it('se o retorno da função fetchProduct com o argumento do produto "MLB1405519561" é uma estrutura de dados igual ao objeto produto', async () => {
-    const response = await fetchProduct("MLB1405519561");
-   expect(response).toEqual(product);
+   await expect(fetchProduct("MLB1405519561")).resolves.toEqual(product);
   });
 
   it('ao chamar a função fetchProduct sem argumento, retorna um erro com a mensagem: "ID não informado"', () => {
-    expect(fetchProduct()).rejects.toThrow('ID não informado');
+    expect(fetchProduct()).rejects.toEqual(new Error('ID não informado'));
   });
 });

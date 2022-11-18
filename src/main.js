@@ -1,5 +1,5 @@
 import { searchCep } from './helpers/cepFunctions';
-import { fetchProduct, fetchProductsList } from './helpers/fetchFunctions';
+import { fetchProductsList } from './helpers/fetchFunctions';
 import { createProductElement } from './helpers/shopFunctions';
 import './style.css';
 
@@ -34,4 +34,3 @@ const createProducList = async () => {
 };
 
 createProducList();
-console.log(await fetchProduct('MLB1405519561'));
