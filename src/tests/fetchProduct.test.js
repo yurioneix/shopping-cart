@@ -15,6 +15,7 @@ describe('Teste a função fetchProduct', () => {
   });
 
   it('se o retorno da função fetchProduct com o argumento do produto "MLB1405519561" é uma estrutura de dados igual ao objeto produto', async () => {
-   await expect(fetchProduct("MLB1405519561")).toEqual(product);
+    const response = await fetchProduct("MLB1405519561");
+   expect(response).toEqual(product);
   });
 });

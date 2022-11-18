@@ -1,7 +1,8 @@
 export const fetchProduct = async (endpoint) => {
   const url = `https://api.mercadolibre.com/items/${endpoint}`;
   const response = await fetch(url);
-  return response;
+  const data = await response.json();
+  return data;
 };
 
 export const fetchProductsList = async (query) => {
