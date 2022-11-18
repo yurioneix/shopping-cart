@@ -29,6 +29,7 @@ const createProducList = async () => {
       .forEach((product) => sectionProducts.appendChild(createProductElement(product)));
   } catch (error) {
     const p = document.querySelector('.loading');
+    p.className = 'error';
     p.innerText = 'Algum erro ocorreu, recarregue a página e tente novamente';
   }
 };
