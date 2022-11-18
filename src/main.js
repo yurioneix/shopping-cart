@@ -9,10 +9,19 @@ document.querySelector('.cep-button').addEventListener('click', searchCep);
 const sectionProducts = document.querySelector('.products');
 const container = document.querySelector('.container');
 
-const request = await fetchProductsList('computador');
-request.forEach((product) => sectionProducts.appendChild(createProductElement(product)));
+const createLoading = () => {
+  const p = document.createElement('p');
+  p.className = 'loading';
+  p.innerText = 'carregando...';
+  container.appendChild(p);
+};
 
-// const createLoading = async () => {
-//   const p = createElement('p');
-//   while (request);
-// };
+const removeLoading = () => {
+  const p = document.querySelector('.loading');
+  container.removeChild(p);
+};
+
+createLoading();
+const request = await fetchProductsList('computador');
+removeLoading();
+request.forEach((product) => sectionProducts.appendChild(createProductElement(product)));
