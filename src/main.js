@@ -5,6 +5,14 @@ import './style.css';
 
 /* */
 document.querySelector('.cep-button').addEventListener('click', searchCep);
+
 const sectionProducts = document.querySelector('.products');
+const container = document.querySelector('.container');
+
 const request = await fetchProductsList('computador');
 request.forEach((product) => sectionProducts.appendChild(createProductElement(product)));
+
+// const createLoading = async () => {
+//   const p = createElement('p');
+//   while (request);
+// };
