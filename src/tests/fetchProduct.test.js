@@ -18,4 +18,8 @@ describe('Teste a função fetchProduct', () => {
     const response = await fetchProduct("MLB1405519561");
    expect(response).toEqual(product);
   });
+
+  it('ao chamar a função fetchProduct sem argumento, retorna um erro com a mensagem: "ID não informado"', () => {
+    expect(fetchProduct()).rejects.toThrow('ID não informado');
+  });
 });
