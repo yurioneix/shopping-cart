@@ -1,8 +1,15 @@
 export const fetchProduct = async (endpoint) => {
-  const url = `https://api.mercadolibre.com/items/${endpoint}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
+  if (!endpoint) {
+    throw new Error('ID não informado');
+  }
+  try {
+    const url = `https://api.mercadolibre.com/items/${endpoint}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error;
+  }
 };
 
 export const fetchProductsList = async (query) => {
