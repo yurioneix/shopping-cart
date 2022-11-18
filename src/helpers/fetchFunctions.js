@@ -12,6 +12,6 @@ export const fetchProductsList = async (query) => {
     const data = await response.json();
     return data.results;
   } catch (e) {
-    throw new Error(e);
+    return e;
   }
 };
