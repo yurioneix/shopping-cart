@@ -1,5 +1,7 @@
-export const fetchProduct = () => {
-  // seu código aqui
+export const fetchProduct = async (endpoint) => {
+  const url = `https://api.mercadolibre.com/items/${endpoint}`;
+  const response = await fetch(url);
+  return response;
 };
 
 export const fetchProductsList = async (query) => {
