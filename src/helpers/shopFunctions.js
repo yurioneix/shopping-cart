@@ -1,6 +1,14 @@
 import { removeCartID, getSavedCartIDs } from './cartFunctions';
 import { fetchProduct } from './fetchFunctions';
 
+let totalPrice = 0;
+
+const updatePrice = (price) => {
+  totalPrice += price;
+  const totalSection = document.querySelector('.total-price');
+  totalSection.innerText = totalPrice.toFixed(2);
+};
+
 // Esses comentários que estão antes de cada uma das funções são chamados de JSdoc,
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições!
 
@@ -46,7 +54,8 @@ export const getIdFromProduct = (product) => (
  * @param {Element} li - Elemento do produto a ser removido do carrinho.
  * @param {string} id - ID do produto a ser removido do carrinho.
  */
-const removeCartProduct = (li, id) => {
+const removeCartProduct = (li, id, price) => {
+  updatePrice(-price);
   li.remove();
   removeCartID(id);
 };
@@ -76,7 +85,8 @@ export const createCartProductElement = ({ id, title, price, pictures }) => {
   const infoContainer = createCustomElement('div', 'cart__product__info-container');
   infoContainer.appendChild(createCustomElement('span', 'product__title', title));
   const priceElement = createCustomElement('span', 'product__price', 'R$ ');
-  priceElement.appendChild(createCustomElement('span', 'product__price__value', price));
+  priceElement
+    .appendChild(createCustomElement('span', 'product__price__value shop', price));
   infoContainer.appendChild(priceElement);
 
   li.appendChild(infoContainer);
@@ -87,18 +97,21 @@ export const createCartProductElement = ({ id, title, price, pictures }) => {
     'delete',
   );
   li.appendChild(removeButton);
-
+  updatePrice(price);
   li.addEventListener('click', async () => {
-    removeCartProduct(li, id);
-    const totalPrice = document.querySelector('.total-price');
-    let preco = 0;
-    const getLocalStorage = getSavedCartIDs().map((ids) => fetchProduct(ids));
-    const storeProducts = await Promise.all(getLocalStorage);
-    storeProducts.forEach(async (product) => {
-      preco += parseFloat(product.price);
-    });
-    totalPrice.innerText = `${preco}`;
+    removeCartProduct(li, id, price);
+
+    // let preco = 0;
+    // const getLocalStorage = getSavedCartIDs().map((ids) => fetchProduct(ids));
+    // const storeProducts = await Promise.all(getLocalStorage);
+    // storeProducts.forEach(async (product) => {
+    //   preco += parseFloat(product.price);
+    // });
+    // totalPrice.innerText = `${preco}`;
   });
+
+  // const prices = document.querySelectorAll('.shop');
+  // console.log(prices);
   return li;
 };
 
