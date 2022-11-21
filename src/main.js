@@ -10,6 +10,8 @@ const sectionProducts = document.querySelector('.products');
 const sectionProductsAll = document.querySelectorAll('.products');
 const container = document.querySelector('.container');
 const cartProducts = document.querySelector('.cart__products');
+const showPrice = document.querySelector('.total-price');
+const prices = [];
 
 const createLoading = () => {
   const p = document.createElement('p');
@@ -42,16 +44,28 @@ sectionProductsAll.forEach((section) => section
     if (event.target) {
       const element = event.target.parentNode.firstChild.innerHTML;
       saveCartID(element);
+
       const result = await fetchProduct(element);
+
       const resultElement = createCartProductElement(result);
       cartProducts.appendChild(resultElement);
+
+      prices.push(result.price);
+      const totalPrices = Math.floor(prices
+        .reduce((acc, curr) => acc + curr, 0));
+      showPrice.innerText = `${totalPrices}`;
     }
   }));
 
-// console.log(getSavedCartIDs().map(async (id) => Promise.all([await fetchProduct(id)])))
 const getLocalStorage = getSavedCartIDs().map(async (id) => fetchProduct(id));
 const storeProducts = await Promise.all(getLocalStorage);
 storeProducts
   .map((product) => cartProducts.appendChild(createCartProductElement(product)));
 
 createProductList();
+
+storeProducts.forEach(async (product) => {
+  prices.push(await product.price);
+  const totalPrices = prices.reduce((acc, curr) => acc + curr, 0);
+  showPrice.innerText = `${totalPrices}`;
+});
