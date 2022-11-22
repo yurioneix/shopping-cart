@@ -100,18 +100,7 @@ export const createCartProductElement = ({ id, title, price, pictures }) => {
   updatePrice(price);
   li.addEventListener('click', async () => {
     removeCartProduct(li, id, price);
-
-    // let preco = 0;
-    // const getLocalStorage = getSavedCartIDs().map((ids) => fetchProduct(ids));
-    // const storeProducts = await Promise.all(getLocalStorage);
-    // storeProducts.forEach(async (product) => {
-    //   preco += parseFloat(product.price);
-    // });
-    // totalPrice.innerText = `${preco}`;
   });
-
-  // const prices = document.querySelectorAll('.shop');
-  // console.log(prices);
   return li;
 };
 

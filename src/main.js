@@ -1,4 +1,4 @@
-import { searchCep } from './helpers/cepFunctions';
+import { searchCep, getAddress } from './helpers/cepFunctions';
 import { fetchProductsList, fetchProduct } from './helpers/fetchFunctions';
 import { createProductElement, createCartProductElement } from './helpers/shopFunctions';
 import { saveCartID, getSavedCartIDs } from './helpers/cartFunctions';
@@ -10,8 +10,6 @@ const sectionProducts = document.querySelector('.products');
 const sectionProductsAll = document.querySelectorAll('.products');
 const container = document.querySelector('.container');
 const cartProducts = document.querySelector('.cart__products');
-// const showPrice = document.querySelector('.total-price');
-// const prices = [];
 
 const createLoading = () => {
   const p = document.createElement('p');
@@ -59,17 +57,16 @@ sectionProductsAll.forEach((section) => section
 const getLocalStorage = getSavedCartIDs().map(async (id) => fetchProduct(id));
 const storeProducts = await Promise.all(getLocalStorage);
 storeProducts
-  .map((product) => {
-    console.log(cartProducts);
-    return cartProducts.appendChild(createCartProductElement(product));
-  });
+  .map((product) => cartProducts.appendChild(createCartProductElement(product)));
 
 createProductList();
 
-storeProducts.forEach(async (product) => {
-  // console.log(product);
-  // prices.push(await product.price);
-  // const totalPrices = prices.reduce((acc, curr) => acc + curr, 0);
-  // showPrice.innerText = `${totalPrices}`;
-  // console.log(totalPrices);
-});
+// storeProducts.forEach(async (product) => {
+//   // console.log(product);
+//   // prices.push(await product.price);
+//   // const totalPrices = prices.reduce((acc, curr) => acc + curr, 0);
+//   // showPrice.innerText = `${totalPrices}`;
+//   // console.log(totalPrices);
+// });
+const cep = '05424020';
+getAddress(cep);
