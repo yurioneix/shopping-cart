@@ -6,6 +6,9 @@ export const getAddress = async (cep) => {
   const data = await request.json();
   const address = data.address || data.street;
   const district = data.district || data.neighborhood;
+  const statusOk = 200;
+
+  if (request.status !== statusOk) throw new Error('CEP não encontrado');
 
   return `${address} - ${district} - ${data.city} - ${data.state}`;
 };
