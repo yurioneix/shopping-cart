@@ -68,5 +68,3 @@ createProductList();
 //   // showPrice.innerText = `${totalPrices}`;
 //   // console.log(totalPrices);
 // });
-const cep = '05424020';
-getAddress(cep);
