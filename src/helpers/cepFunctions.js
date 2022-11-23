@@ -4,14 +4,10 @@ export const getAddress = async (cep) => {
   const promises = [brasilAPI, awesomeAPI];
   const request = await Promise.any(promises);
   const data = await request.json();
-  // const ok = 200;
-  console.log(data);
   const address = data.address || data.street;
   const district = data.district || data.neighborhood;
 
   return `${address} - ${district} - ${data.city} - ${data.state}`;
-  // }
-  // return `${data.street} - ${} - ${data.city} - ${data.state}`;
 };
 
 export const searchCep = async () => {
