@@ -6,19 +6,16 @@ export const getAddress = async (cep) => {
   const data = await request.json();
   const ok = 200;
 
-  if (awesomeAPI.status === ok) {
-    return `${data.address} - ${data.district} - ${data.city} - ${data.state}`;
+  if (request.status === ok) {
+    return `${data.street} - ${data.neighborhood} - ${data.city} - ${data.state}`;
   }
-  if (brasilAPI.status === ok) {
-    return `${data.street} - ${data.neighborhood} - ${data.state}`;
-  }
-  throw new Error('CEP não encontrado');
+  return `${data.address} - ${data.district} - ${data.city} - ${data.state}`;
 };
 
 export const searchCep = async () => {
-  const cepInput = document.querySelector('.cep-input').value;
-  const cepLength = 8;
   try {
+    const cepLength = 8;
+    const cepInput = document.querySelector('.cep-input').value;
     if (cepInput.length === cepLength) {
       const adress = await getAddress(cepInput);
       const cartAdress = document.querySelector('.cart__address');

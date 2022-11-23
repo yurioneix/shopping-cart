@@ -1,4 +1,4 @@
-import { searchCep, getAddress } from './helpers/cepFunctions';
+import { searchCep } from './helpers/cepFunctions';
 import { fetchProductsList, fetchProduct } from './helpers/fetchFunctions';
 import { createProductElement, createCartProductElement } from './helpers/shopFunctions';
 import { saveCartID, getSavedCartIDs } from './helpers/cartFunctions';
@@ -60,11 +60,3 @@ storeProducts
   .map((product) => cartProducts.appendChild(createCartProductElement(product)));
 
 createProductList();
-
-// storeProducts.forEach(async (product) => {
-//   // console.log(product);
-//   // prices.push(await product.price);
-//   // const totalPrices = prices.reduce((acc, curr) => acc + curr, 0);
-//   // showPrice.innerText = `${totalPrices}`;
-//   // console.log(totalPrices);
-// });
