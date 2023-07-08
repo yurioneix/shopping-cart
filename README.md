@@ -1,10 +1,32 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# Shopping Cart
+
+Neste projeto desenvolvido no modulo de Fundamentos da Trybe, foi criado uma página de formulário da Escola de Magia de Trybewarts, em que as pessoas estudantes poderão enviar seus feedbacks sobre ela. O tema desse projeto é baseado na obra 'Harry Potter', de J. K. Rowling, já que programar é o mais próximo que podemos chegar de algo verdadeiramente mágico!
+
+
+## Instalação
+
+Para rodar o projeto localmente, basta clonar o repositorio em sua maquina, isntalar as dependencias e rodar o comando npm start. 
+
+
+Clona o repositorio:
+```bash
+  git clone git@github.com:yurioneix/shopping-cart.git
+```
+Troca para a pasta do projeto:
+```bash
+  cd shopping-cart/
+```
+
+Instala as dependencias:
+```bash
+  npm install
+```
+Para rodar com atualizacao em tempo real:
+```bash
+  npm run dev
+```
+
+Para rodar sem live reload:
+```bash
+  npm start
+```
