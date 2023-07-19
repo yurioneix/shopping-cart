@@ -5,7 +5,7 @@ Neste projeto desenvolvido no modulo de Fundamentos da Trybe, foi criado uma pá
 
 ## Instalação
 
-Para rodar o projeto localmente, basta clonar o repositorio em sua maquina, isntalar as dependencias e rodar o comando npm start. 
+Para rodar o projeto localmente, basta clonar o repositorio em sua maquina, instalar as dependencias e rodar o comando npm start. 
 
 
 Clona o repositorio:
